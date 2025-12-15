@@ -61,7 +61,7 @@ void ANauticalJamCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Move);
-		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
+		//EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
 
 		//// Looking
 		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
@@ -81,15 +81,6 @@ void ANauticalJamCharacter::Move(const FInputActionValue& Value)
 	DoMove(MovementVector.X, MovementVector.Y);
 }
 
-void ANauticalJamCharacter::Look(const FInputActionValue& Value)
-{
-	// input is a Vector2D
-	FVector2D LookAxisVector = Value.Get<FVector2D>();
-
-	// route the input
-	DoLook(LookAxisVector.X, LookAxisVector.Y);
-}
-
 void ANauticalJamCharacter::DoMove(float Right, float Forward)
 {
 	if (GetController() != nullptr)
@@ -107,16 +98,6 @@ void ANauticalJamCharacter::DoMove(float Right, float Forward)
 		// add movement 
 		AddMovementInput(ForwardDirection, Forward);
 		AddMovementInput(RightDirection, Right);
-	}
-}
-
-void ANauticalJamCharacter::DoLook(float Yaw, float Pitch)
-{
-	if (GetController() != nullptr)
-	{
-		// add yaw and pitch input to controller
-		AddControllerYawInput(Yaw);
-		AddControllerPitchInput(Pitch);
 	}
 }
 
