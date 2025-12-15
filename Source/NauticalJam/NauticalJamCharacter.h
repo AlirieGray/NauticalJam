@@ -54,6 +54,9 @@ public:
 	/** Constructor */
 	ANauticalJamCharacter();	
 
+	UPROPERTY(VisibleAnywhere);
+	float testFloat;
+
 protected:
 
 	/** Initialize input action bindings */

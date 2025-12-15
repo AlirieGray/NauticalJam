@@ -63,8 +63,8 @@ void ANauticalJamCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Move);
 		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
 
-		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
+		//// Looking
+		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
 	}
 	else
 	{
