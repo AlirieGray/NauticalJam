@@ -42,17 +42,10 @@ void ANauticalJamCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 {
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		
-		// Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-
+	
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Move);
-		//EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
 
-		//// Looking
-		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANauticalJamCharacter::Look);
 	}
 	else
 	{
@@ -66,7 +59,9 @@ void ANauticalJamCharacter::Move(const FInputActionValue& Value)
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
 	// route the input
-	DoMove(MovementVector.X, MovementVector.Y);
+	if (MovementEnabled) {
+		DoMove(MovementVector.X, MovementVector.Y);
+	}
 }
 
 void ANauticalJamCharacter::DoMove(float Right, float Forward)
@@ -87,16 +82,4 @@ void ANauticalJamCharacter::DoMove(float Right, float Forward)
 		AddMovementInput(ForwardDirection, Forward);
 		AddMovementInput(RightDirection, Right);
 	}
-}
-
-void ANauticalJamCharacter::DoJumpStart()
-{
-	// signal the character to jump
-	Jump();
-}
-
-void ANauticalJamCharacter::DoJumpEnd()
-{
-	// signal the character to stop jumping
-	StopJumping();
 }
