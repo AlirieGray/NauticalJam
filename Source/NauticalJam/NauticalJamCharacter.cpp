@@ -58,10 +58,7 @@ void ANauticalJamCharacter::Move(const FInputActionValue& Value)
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
-	// route the input
-	if (MovementEnabled) {
-		DoMove(MovementVector.X, MovementVector.Y);
-	}
+	DoMove(MovementVector.X, MovementVector.Y);
 }
 
 void ANauticalJamCharacter::DoMove(float Right, float Forward)

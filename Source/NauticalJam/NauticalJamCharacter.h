@@ -26,9 +26,6 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MoveAction;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-	bool MovementEnabled;
-
 public:
 
 	/** Constructor */
