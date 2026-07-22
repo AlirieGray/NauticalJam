@@ -27,23 +27,17 @@ protected:
 	UInputAction* MoveAction;
 
 public:
-
-	/** Constructor */
+	
 	ANauticalJamCharacter();	
 
 protected:
-
-	/** Initialize input action bindings */
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
-
-	/** Called for movement input */
+	
 	void Move(const FInputActionValue& Value);
 
 public:
-
-	/** Handles move inputs from either controls or UI interfaces */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoMove(float Right, float Forward);
 };

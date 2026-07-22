@@ -10,6 +10,8 @@ UCLASS()
 class NAUTICALJAM_API AAbilityQueueManager : public AActor
 {
 	GENERATED_BODY()
+	
+	
 
 public:
 	// Sets default values for this actor's properties
