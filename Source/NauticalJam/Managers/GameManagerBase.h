@@ -2,12 +2,15 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "Subsystems/UGameManagerSubsystem.h"
-#include "UGameManagerBase.generated.h"
+#include "GameManagerBase.generated.h"
 
 /**
  * 
  */
+
+
+class UGameManagerSubsystem;
+
 UCLASS(Abstract, BlueprintType, Blueprintable)
 class NAUTICALJAM_API UGameManagerBase : public UObject
 {

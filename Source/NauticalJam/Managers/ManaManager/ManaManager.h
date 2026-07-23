@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Managers/UGameManagerBase.h"
+#include "Managers/GameManagerBase.h"
 #include "ManaManager.generated.h"
 
 UCLASS()
@@ -10,8 +10,10 @@ class NAUTICALJAM_API UManaManager : public UGameManagerBase
 {
 	GENERATED_BODY()
 	
-	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 public:
+	UManaManager();
+	
+	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int MaxMana;
