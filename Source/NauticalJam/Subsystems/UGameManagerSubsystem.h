@@ -2,6 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "Managers/UGameManagerBase.h"
+#include "Managers/AbilityQueueManager/AbilityQueueManager.h"
+#include "Managers/ManaManager/ManaManager.h"
 #include "UObject/Object.h"
 #include "UGameManagerSubsystem.generated.h"
 
@@ -12,9 +14,8 @@ UCLASS()
 class NAUTICALJAM_API UGameManagerSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
-	
-	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
-	virtual void Deinitialize() override;
+
+public:
 	
 	template<typename T>
 	T* GetManager();
@@ -26,11 +27,21 @@ class NAUTICALJAM_API UGameManagerSubsystem : public UGameInstanceSubsystem
 	// Stricter type safety for C++ for getting a manager from the list of managers
 	UGameManagerBase* GetManager(TSubclassOf<UGameManagerBase> ManagerClass) const;
 	
+	UFUNCTION(BlueprintCallable, Category = "Managers")
+	UManaManager* GetManaManager() const;
+	
+	UFUNCTION(BlueprintCallable, Category = "Managers")
+	UAbilityQueueManager* GetAbilityQueueManager() const;
+	
 protected:
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
+	
 	virtual void RegisterManagers();
 	
 	template<typename T>
 	void RegisterManager();
+	
 	
 private:
 	// Map for access to managers

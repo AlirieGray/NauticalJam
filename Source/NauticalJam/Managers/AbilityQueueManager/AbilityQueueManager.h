@@ -22,9 +22,11 @@ public:
 	
 	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 	
+	// returns true if ability was successfully added to queue, false otherwise
 	UFUNCTION(BlueprintCallable)
-	void EnqueueAbility(FName MagicalGirl, FAbility Ability);
+	bool EnqueueAbility(FName MagicalGirl, FAbility Ability);
 	
+	// returns true if the ability was successfully executed and removed from the queue false otherwise. 
 	UFUNCTION(BlueprintCallable)
-	void DequeueAbility(FName MagicalGirl, FAbility Ability);
+	bool DequeueAndExecuteAbility(FName MagicalGirl, FAbility Ability);
 };

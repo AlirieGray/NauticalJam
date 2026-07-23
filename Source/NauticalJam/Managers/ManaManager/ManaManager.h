@@ -11,8 +11,8 @@ class NAUTICALJAM_API UManaManager : public UGameManagerBase
 	GENERATED_BODY()
 	
 	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
-
 public:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int MaxMana;
 	
@@ -29,7 +29,7 @@ public:
 	void SpendMana(int amount);
 	
 	UFUNCTION(BlueprintNativeEvent)
-	void RegenerateMana(int amount);
+	void RegenerateMana();
 	
 	UFUNCTION(BlueprintNativeEvent)
 	void UpdateMaxManaAmount(int amount);
