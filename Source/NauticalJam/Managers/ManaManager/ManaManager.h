@@ -10,8 +10,8 @@ class NAUTICALJAM_API UManaManager : public UGameManagerBase
 {
 	GENERATED_BODY()
 	
-	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 public:
+	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int MaxMana;

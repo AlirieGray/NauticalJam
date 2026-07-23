@@ -1,4 +1,6 @@
 ﻿#include "AbilityQueueManager.h"
+#include "Managers/ManaManager/ManaManager.h"
+#include "Subsystems/GameManagerSubsystem.h"
 
 UAbilityQueueManager::UAbilityQueueManager()
 {

@@ -15,6 +15,8 @@ class NAUTICALJAM_API UAbilityQueueManager : public UGameManagerBase
 	GENERATED_BODY()
 
 public:
+	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
+	
 	// returns true if ability was successfully added to queue, false otherwise
 	UFUNCTION(BlueprintNativeEvent)
 	bool EnqueueAbility(FName MagicalGirl, FAbility Ability);
@@ -31,5 +33,4 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 	int MaxAbilitiesInQueue;
 	
-	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 };

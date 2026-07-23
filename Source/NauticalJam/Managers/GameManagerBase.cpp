@@ -1,4 +1,4 @@
-﻿#include "UGameManagerBase.h"
+﻿#include "GameManagerBase.h"
 
 void UGameManagerBase::Initialize(UGameManagerSubsystem* InstanceOwner)
 {
