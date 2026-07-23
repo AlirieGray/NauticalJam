@@ -2,6 +2,10 @@
 
 UAbilityQueueManager::UAbilityQueueManager()
 {
+	MaxAbilitiesInQueue = 3;
+	MagicalGirlQueues.Add("Joan", FQueue());
+	MagicalGirlQueues.Add("Cassandra", FQueue());
+	MagicalGirlQueues.Add("Verity", FQueue());
 }
 
 void UAbilityQueueManager::Initialize(UGameManagerSubsystem* InstanceOwner)
@@ -9,12 +13,18 @@ void UAbilityQueueManager::Initialize(UGameManagerSubsystem* InstanceOwner)
 	Super::Initialize(InstanceOwner);
 }
 
-bool UAbilityQueueManager::EnqueueAbility(FName MagicalGirl, FAbility Ability)
+bool UAbilityQueueManager::EnqueueAbility_Implementation(FName MagicalGirl, FAbility Ability)
 {
+	if (MagicalGirlQueues[MagicalGirl].Abilities.Num() >= MaxAbilitiesInQueue)
+	{
+		return false;
+	}
+	
+	MagicalGirlQueues[MagicalGirl].Abilities.Add(Ability);
 	return true;
 }
 
-bool UAbilityQueueManager::DequeueAndExecuteAbility(FName MagicalGirl, FAbility Ability)
+bool UAbilityQueueManager::DequeueAndExecuteAbility_Implementation(FName MagicalGirl, FAbility Ability)
 {
 	// ask mana manager if we have enough mana to spend on this ability
 	UManaManager* manaManager = GetWorld()->GetGameInstance()->GetSubsystem<UGameManagerSubsystem>()->GetManaManager();
@@ -29,5 +39,4 @@ bool UAbilityQueueManager::DequeueAndExecuteAbility(FName MagicalGirl, FAbility 
 	}
 	
 	return true;
-	
 }
