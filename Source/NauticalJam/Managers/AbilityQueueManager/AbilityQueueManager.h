@@ -6,7 +6,7 @@
 #include "Data/FAbility.h"
 #include "Data/Queue.h"
 #include "GameFramework/Actor.h"
-#include "Managers/UGameManagerBase.h"
+#include "Managers/GameManagerBase.h"
 #include "AbilityQueueManager.generated.h"
 
 UCLASS()
@@ -15,6 +15,8 @@ class NAUTICALJAM_API UAbilityQueueManager : public UGameManagerBase
 	GENERATED_BODY()
 
 public:
+	UAbilityQueueManager();
+	
 	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 	
 	// returns true if ability was successfully added to queue, false otherwise
@@ -30,7 +32,5 @@ protected:
 	TMap<FName, FQueue> MagicalGirlQueues;
 	
 	// maximum number abilities that can be in a given Magical Girl's queue at one time
-	UPROPERTY(BlueprintReadWrite)
 	int MaxAbilitiesInQueue;
-	
 };

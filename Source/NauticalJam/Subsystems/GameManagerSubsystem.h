@@ -5,7 +5,7 @@
 #include "Managers/AbilityQueueManager/AbilityQueueManager.h"
 #include "Managers/ManaManager/ManaManager.h"
 #include "UObject/Object.h"
-#include "UGameManagerSubsystem.generated.h"
+#include "GameManagerSubsystem.generated.h"
 
 /**
  * 

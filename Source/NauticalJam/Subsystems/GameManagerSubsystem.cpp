@@ -1,4 +1,4 @@
-﻿#include "UGameManagerSubsystem.h"
+﻿#include "GameManagerSubsystem.h"
 
 #include "Managers/AbilityQueueManager/AbilityQueueManager.h"
 #include "Managers/ManaManager/ManaManager.h"
@@ -42,6 +42,13 @@ UGameManagerBase* UGameManagerSubsystem::GetManagerByClass(TSubclassOf<UGameMana
 	UGameManagerBase* Manager = Managers.FindRef(ManagerClass);
 	
 	return Manager;
+}
+
+template <typename T>
+void UGameManagerSubsystem::RegisterManager()
+{
+	T* Manager = NewObject<T>(this);
+	Managers.Add(T::StaticClass(), Manager);
 }
 
 void UGameManagerSubsystem::RegisterManagers()
