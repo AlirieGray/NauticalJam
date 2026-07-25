@@ -5,6 +5,7 @@
 #include "Managers/AbilityQueueManager/AbilityQueueManager.h"
 #include "Managers/ManaManager/ManaManager.h"
 #include "Managers/EnemyManager/EnemyManager.h"
+#include "Managers/AbilityManager/AbilityManager.h"
 #include "UObject/Object.h"
 #include "GameManagerSubsystem.generated.h"
 
@@ -36,6 +37,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "Managers")
 	UEnemyManager* GetEnemyManager() const;
+	
+	UFUNCTION(BlueprintCallable, Category = "Managers")
+	UAbilityManager* GetAbilityManager() const;
 	
 protected:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;

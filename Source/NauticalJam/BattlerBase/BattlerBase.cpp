@@ -1,19 +1,24 @@
 ﻿#include "BattlerBase.h"
 
-
-
-
-void ABattlerBase::DealDamage(float damage_dealt, const TArray<ABattlerBase*>& targets)
+ABattlerBase::ABattlerBase()
 {
+	MaxHealth = 100;
+	Health = MaxHealth;
+}
+
+void ABattlerBase::Heal(float Amount, ABattlerBase* Causer)
+{
+	Health = FMath::Clamp(Health + Amount, 0, MaxHealth);
 	return;
 }
 
-void ABattlerBase::Heal(float amount_healed, const TArray<ABattlerBase*>& targets)
+void ABattlerBase::TakeDamage(float Damage, ABattlerBase* Causer)
 {
+	Health = FMath::Clamp(Health - Damage, 0, MaxHealth);
 	return;
 }
 
-void ABattlerBase::ReceiveDamage(float damage_taken)
+void ABattlerBase::OnDeath_Implementation()
 {
 	return;
 }
