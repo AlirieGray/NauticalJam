@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "FAbility.h"
 
 #include "FMagicalGirlStats.generated.h"
 
@@ -24,6 +25,9 @@ struct FMagicalGirlStats : public FTableRowBase
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Attack;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FAbility> Abilities;
 	
 	FMagicalGirlStats()
 	{
