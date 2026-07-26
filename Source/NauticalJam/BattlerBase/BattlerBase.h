@@ -15,6 +15,7 @@ class NAUTICALJAM_API ABattlerBase: public ACharacter
 	GENERATED_BODY()
 	
 public:
+	ABattlerBase();
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Health;
@@ -23,12 +24,17 @@ public:
 	float MaxHealth;
 	
 	UFUNCTION()
-	void DealDamage(float damage_dealt, const TArray<ABattlerBase*>& targets);
-	
-	UFUNCTION()
-	void Heal(float amount_healed, const TArray<ABattlerBase*>& targets);
+	void Heal(float Amount, ABattlerBase* Causer);
 	
 	UFUNCTION(BlueprintCallable)
-	void ReceiveDamage(float damage_taken);
+	void TakeDamage(float Damage, ABattlerBase* Causer);
 	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void OnDamageTaken(float Delta);
+	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void OnHealed(float Delta);
+	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void OnDeath();
 };

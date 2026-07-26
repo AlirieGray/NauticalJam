@@ -3,6 +3,7 @@
 #include "Managers/AbilityQueueManager/AbilityQueueManager.h"
 #include "Managers/ManaManager/ManaManager.h"
 #include "Managers/EnemyManager/EnemyManager.h"
+#include "Managers/AbilityManager/AbilityManager.h"
 
 void UGameManagerSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -57,6 +58,7 @@ void UGameManagerSubsystem::RegisterManagers()
 	RegisterManager<UAbilityQueueManager>();
 	RegisterManager<UManaManager>();
 	RegisterManager<UEnemyManager>();
+	RegisterManager<UAbilityManager>();
 }
 
 UManaManager* UGameManagerSubsystem::GetManaManager() const
@@ -84,6 +86,16 @@ UEnemyManager* UGameManagerSubsystem::GetEnemyManager() const
 	if (const TObjectPtr<UGameManagerBase>* Found = Managers.Find(UEnemyManager::StaticClass()))
 	{
 		return Cast<UEnemyManager>(Found->Get());
+	}
+	
+	return nullptr;
+}
+
+UAbilityManager* UGameManagerSubsystem::GetAbilityManager() const
+{
+	if (const TObjectPtr<UGameManagerBase>* Found = Managers.Find(UAbilityManager::StaticClass()))
+	{
+		return Cast<UAbilityManager>(Found->Get());
 	}
 	
 	return nullptr;
