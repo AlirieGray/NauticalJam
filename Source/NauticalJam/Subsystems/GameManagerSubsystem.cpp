@@ -93,7 +93,7 @@ UEnemyManager* UGameManagerSubsystem::GetEnemyManager() const
 
 UAbilityManager* UGameManagerSubsystem::GetAbilityManager() const
 {
-	if (const TObjectPtr<UGameManagerBase>* Found = Managers.Find(UEnemyManager::StaticClass()))
+	if (const TObjectPtr<UGameManagerBase>* Found = Managers.Find(UAbilityManager::StaticClass()))
 	{
 		return Cast<UAbilityManager>(Found->Get());
 	}

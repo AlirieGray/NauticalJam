@@ -30,5 +30,11 @@ public:
 	void TakeDamage(float Damage, ABattlerBase* Causer);
 	
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void OnDamageTaken(float Delta);
+	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void OnHealed(float Delta);
+	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void OnDeath();
 };
