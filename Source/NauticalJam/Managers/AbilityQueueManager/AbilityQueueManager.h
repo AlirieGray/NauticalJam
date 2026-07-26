@@ -20,12 +20,12 @@ public:
 	virtual void Initialize(UGameManagerSubsystem* InstanceOwner) override;
 	
 	// returns true if ability was successfully added to queue, false otherwise
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable)
 	bool EnqueueAbility(FName MagicalGirl, FAbility Ability);
 	
-	// returns true if the ability was successfully executed and removed from the queue false otherwise. 
-	UFUNCTION(BlueprintNativeEvent)
-	bool DequeueAndExecuteAbility(FName MagicalGirl, FAbility Ability);
+	// returns an Ability if it was successfully removed from the queue nullptr otherwise. 
+	UFUNCTION(BlueprintCallable)
+	FAbility DequeueAbility(FName MagicalGirl, bool& outSuccess);
 
 protected:
 	UPROPERTY(BlueprintReadWrite)

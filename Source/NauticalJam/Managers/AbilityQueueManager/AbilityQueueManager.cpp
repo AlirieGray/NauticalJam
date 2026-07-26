@@ -15,7 +15,7 @@ void UAbilityQueueManager::Initialize(UGameManagerSubsystem* InstanceOwner)
 	Super::Initialize(InstanceOwner);
 }
 
-bool UAbilityQueueManager::EnqueueAbility_Implementation(FName MagicalGirl, FAbility Ability)
+bool UAbilityQueueManager::EnqueueAbility(FName MagicalGirl, FAbility Ability)
 {
 	if (MagicalGirlQueues[MagicalGirl].Abilities.Num() >= MaxAbilitiesInQueue)
 	{
@@ -26,19 +26,32 @@ bool UAbilityQueueManager::EnqueueAbility_Implementation(FName MagicalGirl, FAbi
 	return true;
 }
 
-bool UAbilityQueueManager::DequeueAndExecuteAbility_Implementation(FName MagicalGirl, FAbility Ability)
+FAbility UAbilityQueueManager::DequeueAbility(FName MagicalGirl, bool&bOutSuccess)
 {
+	
+	if (MagicalGirlQueues[MagicalGirl].Abilities.Num() == 0)
+	{
+		bOutSuccess = false;
+		return FAbility();
+	}
+	
+	FAbility ability = MagicalGirlQueues[MagicalGirl].Abilities[0];
+	
 	// ask mana manager if we have enough mana to spend on this ability
 	UManaManager* manaManager = GetWorld()->GetGameInstance()->GetSubsystem<UGameManagerSubsystem>()->GetManaManager();
 	if (!manaManager)
 	{
-		return false;
+		bOutSuccess = false;
+		return FAbility();
 	}
 	
-	if (manaManager->CurrentMana < Ability.ManaCost)
+	if (manaManager->HasMana(ability.ManaCost))
 	{
-		return false;
+		MagicalGirlQueues[MagicalGirl].Abilities.RemoveAt(0);
+		bOutSuccess = true;
+		return ability;
 	}
 	
-	return true;
+	bOutSuccess = false;
+	return FAbility();
 }
