@@ -27,7 +27,7 @@ struct FMagicalGirlStats : public FTableRowBase
 	float Attack;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<FAbility> Abilities;
+	TArray<EAbility> Abilities;
 	
 	FMagicalGirlStats()
 	{
@@ -43,7 +43,7 @@ struct FMagicalGirlStats : public FTableRowBase
 	{
 		MaxHealth = maxHealth;
 		Sleuth = sleuth;
-		Clairvoyance = 0;
+		Clairvoyance = clairvoyance;
 		Strength = strength;
 		Evasion = evasion;
 		Attack = attack;
