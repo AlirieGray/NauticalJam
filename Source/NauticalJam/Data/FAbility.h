@@ -7,7 +7,7 @@ enum class EAbility : uint8
 {
 	BasicAttack UMETA(DisplayName = "Basic Attack"),
 	BasicHeal UMETA(DisplayName = "Basic Heal"),
-	BlessingOfLight UMETA(DisplayName = "Blessing of Light"),
+	BlessingOfLight UMETA(DisplayName = "Blessing Of Light"),
 	SpiritZap UMETA(DisplayName = "Spirit Zap"),
 };
 
@@ -23,7 +23,7 @@ struct FAbility : public FTableRowBase
 	int ManaCost;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSoftObjectPtr<UTexture2D> Icon;
+	TObjectPtr<UTexture2D> Icon;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float DamageBurst;
@@ -60,7 +60,7 @@ struct FAbility : public FTableRowBase
 		AppliedEffects = TMap<FName, float> ();
 	}
 	
-	FAbility(EAbility name, int manaCost, TSoftObjectPtr<UTexture2D> iconRef, float damageBurst, float dotAmount, float dotDuration, float healBurst, float hotAmount, float hotDuration, TMap<FName, float> appliedEffects)
+	FAbility(EAbility name, int manaCost, TObjectPtr<UTexture2D> iconRef, float damageBurst, float dotAmount, float dotDuration, float healBurst, float hotAmount, float hotDuration, TMap<FName, float> appliedEffects)
 	{
 		Name = name;
 		ManaCost = manaCost;
