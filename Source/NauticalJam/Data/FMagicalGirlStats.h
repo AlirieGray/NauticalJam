@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "FAbility.h"
 
 #include "FMagicalGirlStats.generated.h"
 
@@ -25,6 +26,9 @@ struct FMagicalGirlStats : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Attack;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<EAbility> Abilities;
+	
 	FMagicalGirlStats()
 	{
 		MaxHealth = 100;
@@ -39,7 +43,7 @@ struct FMagicalGirlStats : public FTableRowBase
 	{
 		MaxHealth = maxHealth;
 		Sleuth = sleuth;
-		Clairvoyance = 0;
+		Clairvoyance = clairvoyance;
 		Strength = strength;
 		Evasion = evasion;
 		Attack = attack;

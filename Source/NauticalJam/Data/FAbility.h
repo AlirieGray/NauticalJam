@@ -2,13 +2,22 @@
 
 #include "FAbility.generated.h"
 
+UENUM(Blueprintable)
+enum class EAbility : uint8
+{
+	BasicAttack UMETA(DisplayName = "Basic Attack"),
+	BasicHeal UMETA(DisplayName = "Basic Heal"),
+	BlessingOfLight UMETA(DisplayName = "Blessing of Light"),
+	SpiritZap UMETA(DisplayName = "Spirit Zap"),
+};
+
 USTRUCT(BlueprintType)
 struct FAbility : public FTableRowBase
 {
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName Name;
+	EAbility Name;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int ManaCost;
@@ -39,7 +48,7 @@ struct FAbility : public FTableRowBase
 	
 	FAbility()
 	{
-		Name = "";
+		Name = EAbility::BasicAttack;
 		Icon = nullptr;
 		ManaCost = 0;
 		DamageBurst = 0;
@@ -51,7 +60,7 @@ struct FAbility : public FTableRowBase
 		AppliedEffects = TMap<FName, float> ();
 	}
 	
-	FAbility(FName name, int manaCost, TSoftObjectPtr<UTexture2D> iconRef, float damageBurst, float dotAmount, float dotDuration, float healBurst, float hotAmount, float hotDuration, TMap<FName, float> appliedEffects)
+	FAbility(EAbility name, int manaCost, TSoftObjectPtr<UTexture2D> iconRef, float damageBurst, float dotAmount, float dotDuration, float healBurst, float hotAmount, float hotDuration, TMap<FName, float> appliedEffects)
 	{
 		Name = name;
 		ManaCost = manaCost;
