@@ -9,6 +9,9 @@ enum class EAbility : uint8
 	BasicHeal UMETA(DisplayName = "Basic Heal"),
 	BlessingOfLight UMETA(DisplayName = "Blessing Of Light"),
 	SpiritZap UMETA(DisplayName = "Spirit Zap"),
+	CurseBlast UMETA(DisplayName = "Curse Blast"),
+	CurseShield UMETA(DisplayName = "Curse Shield"),
+	CurseRain UMETA(DisplayName = "Curse Rain"),
 };
 
 USTRUCT(BlueprintType)

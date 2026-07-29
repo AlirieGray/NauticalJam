@@ -23,6 +23,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float MaxHealth;
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool Enemy = false;
+	
 	UFUNCTION()
 	void Heal(float Amount, ABattlerBase* Causer);
 	
